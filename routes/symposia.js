@@ -7,11 +7,13 @@ const isAuth = (req, res, next) => {
 };
 // DONT FORGET TO ADD isAuth!!!!!!!!!!!!!!!!!!
 router.get('/', symposiaCtrl.index);
-router.get('/new', isAuth, symposiaCtrl.new);
 router.get('/chronicle', isAuth, symposiaCtrl.chronicle);
-router.post('/chronicle', symposiaCtrl.create);
 router.get('/list', symposiaCtrl.list);
+router.get('/new', isAuth, symposiaCtrl.new);
+router.get("/:id/edit", symposiaCtrl.edit);
 router.get('/:id', symposiaCtrl.show);
-
+router.put('/:id', symposiaCtrl.update);
+router.post('/chronicle', symposiaCtrl.create);
+router.post("/", symposiaCtrl.crt);
 
 module.exports = router;

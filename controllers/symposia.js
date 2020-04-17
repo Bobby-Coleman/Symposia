@@ -35,6 +35,19 @@ const create = (req, res) => {
   });
 };
 
+const crt = (req, res) => { 
+  const symposium = new Symposium(req.body);
+  console.log(symposium);
+  symposium.save( (err) => {
+  res.redirect(`/symposia/:id`);
+});
+};
+
+
+
+
+
+
 const list = (req, res) => { 
     Symposium.find({}, (err, symposium) => {
         res.render('symposia/list', {user: req.user, symposium});
@@ -47,7 +60,29 @@ const show = (req, res) => {
     });
 }
 
- 
+const edit = (req, res) => {
+    Symposium.findById(req.params.id, (err, symposium) => {
+      // console.log("Found Symposium:", symposium);
+      res.render("./symposia/edit.ejs", {user: req.user, symposium});
+      
+    });
+  }
+
+const update = (req, res) => {
+  console.log(req.body);
+  console.log(req.params.id);
+    Symposium.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true },
+      (err, symposium) => {
+        res.redirect(`/symposia/${symposium._id}`);
+      }
+    );
+  }
+
+
+
 module.exports = {
   index,
   chronicle, 
@@ -55,4 +90,7 @@ module.exports = {
   create,
   list, 
   show,
+  update,
+  edit,
+  crt
 };

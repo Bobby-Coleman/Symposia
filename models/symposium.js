@@ -15,6 +15,8 @@ const commentSchema = new Schema({
 //     comment: [commentSchema]
 // });
 
+
+
 const symposiumSchema = new Schema({
     name: {
         type: String,
