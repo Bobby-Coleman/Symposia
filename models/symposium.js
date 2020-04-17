@@ -7,13 +7,6 @@ const commentSchema = new Schema({
     timestamps: true
   });
 
-
-const descriptionSchema = new Schema({
-    description: String,
-  }, {
-    timestamps: true
-  });
-
 // const postSchema = new Schema({
 //     post: {
 //         type: String,
@@ -27,7 +20,7 @@ const symposiumSchema = new Schema({
         type: String,
         required: true,
     },
-    descriptions: [descriptionSchema],
+    description: String,
     comments: [commentSchema]
 }, {
     timestamps: true

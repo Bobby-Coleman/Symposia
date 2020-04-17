@@ -10,7 +10,7 @@ require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var symposiaRouter = require('./routes/symposia');
-const descriptionsRouter = require('./routes/descriptions');
+const descriptionRouter = require('./routes/description');
 const commentsRouter = require('./routes/comments');
 
 var app = express();
@@ -39,7 +39,7 @@ app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/symposia', symposiaRouter);
-app.use('/', descriptionsRouter);
+app.use('/', descriptionRouter);
 app.use('/', commentsRouter);
 
 

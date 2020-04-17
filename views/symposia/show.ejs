@@ -1,21 +1,17 @@
 <%- include('../partials/header') %>
 
+<h1 class="text-align center"><%= symposium.name %></h1>
 
-<form class="col s12" action="/symposia/<%= symposium._id%>/descriptions" method="POST">
+<form class="col s12" action="/symposia/<%= symposium._id%>/description" method="POST">
   <input name="description">
-  <button type="submit">Add Symposium</button>
+  <button type="submit">Add Symposium Description</button>
 </form>
 
-<% if (symposium.descriptions.length) { %>
-  <table>
-   <tbody>
+<% if (symposium.description !== null) { %>
 
-      <tr>
-          <td><%= symposium.descriptions[0].description %></td>
-      </tr>
-
-    </tbody>
-  </table>
+  <div>
+    <p><%= symposium.description %></p>
+  </div>
 
 <% } else { %>
   <h5>No Symposium Yet</h5>
@@ -50,6 +46,7 @@
         <tr>
             <td><%= c.createdAt.toLocaleDateString() %></td>
             <td><%= c.content %></td>
+            <td><button>update</button></td>
         </tr>
         
         <% }); %>
